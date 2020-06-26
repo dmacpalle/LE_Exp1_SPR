@@ -7,7 +7,8 @@ PennController.ResetPrefix(null);
 
 // sequence
 //PennController.Sequence( "welcome-consent", "demographics", "instructions1", "practice", "instructions2", shuffle(randomize("critical"), randomize("filler")), "send", "final");
-PennController.Sequence( "practice", "instructions2", shuffle(randomize("critical"), randomize("filler")), "send", "final");
+//PennController.Sequence( "practice", "instructions2", shuffle(randomize("critical"), randomize("filler")), "send", "final");
+PennController.Sequence( shuffle(randomize("critical")), "send", "final");
 
 // create dashed function
 dashed = (sentence, remove) => {
@@ -198,7 +199,7 @@ PennController("instructions2",
 // --------------------------------------------------------------------------------------------------------------
 // Critical items
 
-PennController.Template( PennController.GetTable("fictional.csv"), // use subset.csv for celebrity names
+PennController.Template( PennController.GetTable("world_test.csv"), // use subset.csv for celebrity names
                          variable => ["critical",
                                       "PennController", PennController(
                                           defaultText
