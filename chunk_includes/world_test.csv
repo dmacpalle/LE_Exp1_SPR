@@ -1,4 +1,4 @@
-Item_ID,Bio,Critical,Name,Gender_Code,Gender,Vital_Code,Vital status,Type_Code,Type,Tense_Code,Tense,MM_Code,MM,List,Match,Correct_Response,Yes_Press,Unique_ID
+Item_ID,Bio,critical,name,gender_code,gender,vital_code,vital_status,type_code,type,tense_code,tense,mm_code,mm,list,match,correct_response,yes_unique,unique_id
 1,Eddie Redmayne is a British actor. He lives in London.,He*has appeared*in numerous*blockbusters*in the past*supposedly.,Eddie Redmayne,0,male,0,living,1,critical,1,PP,1,livingPP,15,yes,5,5,11011
 2,Richard Nixon was an American politician. He died in New York.,He*has appeared*in prominent*political debates*in the past*supposedly.,Richard Nixon,0,male,1,dead,1,critical,1,PP,11,deadPP,15,no,4,5,12111
 3,Shakira is a Colombian singer. She lives in Barcelona.,She*will appear*in popular*music videos*in the future*supposedly.,Shakira,1,female,0,living,1,critical,2,SF,2,livingSF,15,yes,5,5,13021
