@@ -1,0 +1,5 @@
+Item_ID,Bio,Critical,Name,Gender_Code,Gender,Vital_Code,Vital_status,Type_Code,Type,Tense_Code,Tense,MM_Code,MM,List,Match,Correct_Response,Yes_Press,Unique_ID
+2,Richard Nixon was an American politician. He died in New York.,"He has appeared in prominent political debates in the past, supposedly.",Richard Nixon,0,male,1,dead,1,critical,1,PP,11,deadPP,14,no,5,4,12111
+6,Queen Mum was a British royal. She died in Windsor Castle.,"She has appeared in prominent public events in the past, supposedly.",Queen Mum,1,female,1,dead,1,critical,1,PP,11,deadPP,14,no,5,4,16111
+10,Jimi Hendrix was an American musician. He died in London.,"He has performed in numerous music festivals in the past, supposedly.",Jimi Hendrix,0,male,1,dead,1,critical,1,PP,11,deadPP,14,no,5,4,110111
+14,Mary Tyler Moore was an American actor. She died in Connecticut.,"She has performed in well received sitcoms in the past, supposedly.",Mary Tyler Moore,1,female,1,dead,1,critical,1,PP,11,deadPP,14,no,5,4,114111
