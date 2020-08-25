@@ -1,9 +1,0 @@
-item_id,bio,critical,name,celeb,gender_code,gender,vital_Code,vital_status,type_code,type,tense_code,tense,mm_code,mm,list,group,match,correct_response,yes_press,unique_id
-1,Myron Bowen is a British actor. He lives in London.  ,"He*has appeared*in numerous*blockbusters*in the past,*supposedly.",Myron Bowen,Eddie Redmayne,0,male,0,living,1,critical,1,PP,1,livingPP,14,1,yes,4,4,11011
-2,Bruce Cole was an American politician. He died in New York. ,"He*has appeared*in prominent*political debates*in the past,*supposedly.",Bruce Cole,Richard Nixon,0,male,1,dead,1,critical,1,PP,11,deadPP,14,1,no,5,4,12111
-3,Camila is a Colombian singer. She lives in Barcelona. ,"She*will appear*in popular*music videos*in the future,*supposedly.",Camila,Shakira,1,female,0,living,1,critical,2,SF,2,livingSF,14,1,yes,4,4,13021
-4,Judith Walters was an American actor. She died in Los Angeles. ,"She*will appear*in prominent*teen dramas*in the future,*supposedly.",Judith Walters,Brittany Murphy,1,female,1,dead,1,critical,2,SF,12,deadSF,14,1,no,5,4,14121
-41,"Kevin Wilson is an American thinker. He lives in Washington, D.C. ","He*has sold*critically acclaimed*computers*in the past,*no doubt.",Kevin Wilson,Bill Gates,0,male,0,living,1,critical,1,PP,1,livingPP,14,1,yes,4,4,141011
-42,Sylvester Davis was an American author. He died in Connecticut.  ,"He*has sold*well-received*novels*in the past,*no doubt.",Sylvester Davis,Mark Twain,0,male,1,dead,1,critical,1,PP,11,deadPP,14,1,no,5,4,142111
-43,Akinunmi Bukunmi is a Nigerian author. She lives in Nigeria and the United States.,"She*will sell*well-received*books*in the future,*no doubt.",Akinunmi Bukunmi,Chimamanda Ngozi Adichi,1,female,0,living,1,critical,2,SF,2,livingSF,14,1,yes,4,4,143021
-44,Thelma Beck was an American singer. She died in Marseilles.  ,"She*will sell*critically acclaimed*records*in the future,*no doubt.",Thelma Beck,Nina Simone,1,female,1,dead,1,critical,2,SF,12,deadSF,14,1,no,5,4,144121
