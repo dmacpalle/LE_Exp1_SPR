@@ -1,0 +1,6 @@
+item_id,bio,critical,prac1,prac2,prac3,prac4,spillover,name,gender,life_status,type,tense,mm,list,unique_id
+209,Ian McEwan is a British novelist. He had been married twice.,"Many of his*novels*have been adapted*into films,*according to news reports.",Many of his,novels,have been adapted,"into films, ",according to news reports.,Ian McEwan,male,living,practice,practice,p,111,11011
+210,Pierre Gatineau is a Canadian rapper. He lives in Montréal.,"He*is well-known*in French speaking*countries,*supposedly.",He,is well-known,in French speaking,"countries,",supposedly.,Pierre Gatineau,female,dead,practice,practice,p,111,12111
+211,"Before her death in 2009, Chloe Masterson was an American singer.","She*is currently*recording*a new album,*apparently.",She,is currently ,recording,"a new album,",apparently,Chloe Masterson,male,living,practice,practice,p,111,13021
+212,Toni Morrison was an American novelist from Ohio.,"She*will receive*the Nobel Prize*in Literature,*supposedly.",She,will receive,the Nobel Prize,in Literature,supposedly.,Toni Morrison,female,dead,practice,practice,p,111,14121
+213,William Shakespeare was an English playwright. He died in 1616.,"He*lives*in Stratford-upon-Avon,*so his biography*says.",He,lives,"in Stratford-upon-Avon,",so his biography ,says.,William Shakespeare,female,dead,practice,practice,p,111,15011
