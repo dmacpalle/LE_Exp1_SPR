@@ -1,0 +1,120 @@
+item_id,bio,critical,name,gender,life_status,type,tense,mm,list,match,bare,Unique_ID,sentence
+2,Richard Nixon was an American politician. He died in New York.,"He*has appeared*in prominent*political debates*in the past,*supposedly.",Richard Nixon,male,dead,critical,PP,deadPP,1,no,appear,12111,2a
+2,Richard Nixon was an American politician. He died in New York.,"He*will appear*in prominent*political debates*in the future,*supposedly.",Richard Nixon,male,dead,critical,SF,deadSF,2,no,appear,12122,2c
+2,Justin Trudeau is a Canadian politician. He lives in Ottawa.,"He*has appeared*in prominent*political debates*in the past,*supposedly.",Justin Trudeau,male,living,critical,PP,livingPP,3,yes,appear,12013,2b
+2,Justin Trudeau is a Canadian politician. He lives in Ottawa.,"He*will appear*in prominent*political debates*in the future,*supposedly.",Justin Trudeau,male,living,critical,SF,livingSF,4,yes,appear,12024,2d
+3,Shakira is a Colombian singer. She lives in Barcelona.,"She*will appear*in popular*music videos*in the future,*supposedly.",Shakira,female,living,critical,SF,livingSF,1,yes,appear,13021,3d
+3,Whitney Houston was an American singer. She died in Beverly Hills.,"She*has appeared*in popular*music videos*in the past,*supposedly.",Whitney Houston,female,dead,critical,PP,deadPP,2,no,appear,13114,3a
+3,Whitney Houston was an American singer. She died in Beverly Hills.,"She*will appear*in popular*music videos*in the future,*supposedly.",Whitney Houston,female,dead,critical,SF,deadSF,3,no,appear,13123,3c
+3,Shakira is a Colombian singer. She lives in Barcelona.,"She*has appeared*in popular*music videos*in the past,*supposedly.",Shakira,female,living,critical,PP,livingPP,4,yes,appear,13012,3b
+10,Elton John is an English musician. He lives in Windsor.,"He*has performed*in numerous*music festivals*in the past,*supposedly.",Elton John,male,living,critical,PP,livingPP,1,yes,perform,110013,10b
+10,Elton John is an English musician. He lives in Windsor.,"He*will perform*in numerous*music festivals*in the future,*supposedly.",Elton John,male,living,critical,SF,livingSF,2,yes,perform,110024,10d
+10,Jimi Hendrix was an American musician. He died in London.,"He*has performed*in numerous*music festivals*in the past,*supposedly.",Jimi Hendrix,male,dead,critical,PP,deadPP,3,no,perform,110111,10a
+10,Jimi Hendrix was an American musician. He died in London.,"He*will perform*in numerous*music festivals*in the future,*supposedly.",Jimi Hendrix,male,dead,critical,SF,deadSF,4,no,perform,110122,10c
+13,Amy Winehouse was a British singer. She died in London.,"She*will perform*in prestigious*arenas*in the future,*supposedly.",Amy Winehouse,female,dead,critical,SF,deadSF,1,no,perform,113124,13c
+13,Beyoncé is an American singer. She lives in Los Angeles.,"She*has performed*in prestigious*arenas*in the past,*supposedly.",Beyoncé,female,living,critical,PP,livingPP,2,yes,perform,113011,13b
+13,Beyoncé is an American singer. She lives in Los Angeles.,"She*will perform*in prestigious*arenas*in the future,*supposedly.",Beyoncé,female,living,critical,SF,livingSF,3,yes,perform,113022,13d
+13,Amy Winehouse was a British singer. She died in London.,"She*has performed*in prestigious*arenas*in the past,*supposedly.",Amy Winehouse,female,dead,critical,PP,deadPP,4,no,perform,113113,13a
+22,David Bowie was a British singer. He died in New York.,"He*has played*numerous*concerts*in the past,*so it's said.",David Bowie,male,dead,critical,PP,deadPP,1,no,play,122111,22a
+22,David Bowie was a British singer. He died in New York.,"He*will play*numerous*concerts*in the future,*so it's said.",David Bowie,male,dead,critical,SF,deadSF,2,no,play,122122,22c
+22,Mick Jagger is a British singer. He lives in London.,"He*has played*numerous*concerts*in the past,*so it's said.",Mick Jagger,male,living,critical,PP,livingPP,3,yes,play,122013,22b
+22,Mick Jagger is a British singer. He lives in London.,"He*will play*numerous*concerts*in the future,*so it's said.",Mick Jagger,male,living,critical,SF,livingSF,4,yes,play,122024,22d
+23,Janet Jackson is an American singer. She lives in Los Angeles.,"She*will play*in numerous*packed arenas*in the future,*so it's said.",Janet Jackson,female,living,critical,SF,livingSF,1,yes,play,123021,23d
+23,Janis Joplin was an American singer. She died in Los Angeles.,"She*has played*in numerous*packed arenas*in the past,*so it's said.",Janis Joplin,female,dead,critical,PP,deadPP,2,no,play,123114,23a
+23,Janis Joplin was an American singer. She died in Los Angeles.,"She*will play*in numerous*packed arenas*in the future,*so it's said.",Janis Joplin,female,dead,critical,SF,deadSF,3,no,play,123123,23c
+23,Janet Jackson is an American singer. She lives in Los Angeles.,"She*has played*in numerous*packed arenas*in the past,*so it's said.",Janet Jackson,female,living,critical,PP,livingPP,4,yes,play,123012,23b
+28,Benedict Cumberbatch is a British actor. He lives in London.,"He*has received*prestigious*acting awards*in the past,*so it's said.",Benedict Cumberbatch,male,living,critical,PP,livingPP,1,yes,receive,128014,28b
+28,Benedict Cumberbatch is a British actor. He lives in London.,"He*will receive*prestigious*acting awards*in the future,*so it's said.",Benedict Cumberbatch,male,living,critical,SF,livingSF,2,yes,receive,128023,28d
+28,Sir Christopher Lee was a British actor. He died in London.,"He*has received*prestigious*acting awards*in the past,*so it's said.",Sir Christopher Lee,male,dead,critical,PP,deadPP,3,no,receive,128112,28a
+28,Sir Christopher Lee was a British actor. He died in London.,"He*will receive*prestigious*acting awards*in the future,*so it's said.",Sir Christopher Lee,male,dead,critical,SF,deadSF,4,no,receive,128121,28c
+31,Mother Teresa was an Albanian-Indian missionary. She died in Kolkata.,"She*will receive*prestigious*activism awards*in the future,*so it's said.",Mother Teresa,female,dead,critical,SF,deadSF,1,no,receive,131123,31c
+31,Malala is a Pakistani activist. She lives in Birmingham.,"She*has received*prestigious*activism awards*in the past,*so it's said.",Malala,female,living,critical,PP,livingPP,2,yes,receive,131012,31b
+31,Malala is a Pakistani activist. She lives in Birmingham.,"She*will receive*prestigious*activism awards*in the future,*so it's said.",Malala,female,living,critical,SF,livingSF,3,yes,receive,131021,31d
+31,Mother Teresa was an Albanian-Indian missionary. She died in Kolkata.,"She*has received*prestigious*activism awards*in the past,*so it's said.",Mother Teresa,female,dead,critical,PP,deadPP,4,no,receive,131114,31a
+35,Romy Schneider was an Austrian actor. She died in Paris.,"She*has released*well-received*movies*in the past,*so it's said.",Romy Schneider,female,dead,critical,PP,deadPP,1,no,release,135114,35a
+35,Romy Schneider was an Austrian actor. She died in Paris.,"She*will release*well-received*movies*in the future,*so it's said.",Romy Schneider,female,dead,critical,SF,deadSF,2,no,release,135123,35c
+35,Meryl Streep is an American actor. She lives in Conneticut.,"She*has released*well-received*movies*in the past,*so it's said.",Meryl Streep,female,living,critical,PP,livingPP,3,yes,release,135012,35b
+35,Meryl Streep is an American actor. She lives in Conneticut.,"She*will release*well-received*movies*in the future,*so it's said.",Meryl Streep,female,living,critical,SF,livingSF,4,yes,release,135021,35d
+39,J.K. Rowling is a British author. She lives in Scotland.,"She*will release*critically acclaimed*novels*in the future,*so it's said.",J.K. Rowling,female,living,critical,SF,livingSF,1,yes,release,139021,39d
+39,Agatha Christie was a British author. She died in Oxfordshire.,"She*has released*critically acclaimed*novels*in the past,*so it's said.",Agatha Christie,female,dead,critical,PP,deadPP,2,no,release,139114,39a
+39,Agatha Christie was a British author. She died in Oxfordshire.,"She*will release*critically acclaimed*novels*in the future,*so it's said.",Agatha Christie,female,dead,critical,SF,deadSF,3,no,release,139123,39c
+39,J.K. Rowling is a British author. She lives in Scotland.,"She*has released*critically acclaimed*novels*in the past,*so it's said.",J.K. Rowling,female,living,critical,PP,livingPP,4,yes,release,139012,39b
+42,George R.R. Martin is an American author. He lives in Santa Fe.,"He*has sold*well-received*novels*in the past,*no doubt.",George R.R. Martin,male,living,critical,PP,livingPP,1,yes,sell,142013,42b
+42,George R.R. Martin is an American author. He lives in Santa Fe.,"He*will sell*well-received*novels*in the future,*no doubt.",George R.R. Martin,male,living,critical,SF,livingSF,2,yes,sell,142024,42d
+42,Mark Twain was an American author. He died in Connecticut.,"He*has sold*well-received*novels*in the past,*no doubt.",Mark Twain,male,dead,critical,PP,deadPP,3,no,sell,142111,42a
+42,Mark Twain was an American author. He died in Connecticut.,"He*will sell*well-received*novels*in the future,*no doubt.",Mark Twain,male,dead,critical,SF,deadSF,4,no,sell,142122,42c
+45,Prince was an American singer. He died in Minnesota.,"He*will sell*popular*records*in the future,*no doubt.",Prince,male,dead,critical,SF,deadSF,1,no,sell,145124,45c
+45,Kendrick Lamar is an American singer. He lives in Los Angeles.,"He*has sold*popular*records*in the past,*no doubt.",Kendrick Lamar,male,living,critical,PP,livingPP,2,yes,sell,145011,45b
+45,Kendrick Lamar is an American singer. He lives in Los Angeles.,"He*will sell*popular*records*in the future,*no doubt.",Kendrick Lamar,male,living,critical,SF,livingSF,3,yes,sell,145022,45d
+45,Prince was an American singer. He died in Minnesota.,"He*has sold*popular*records*in the past,*no doubt.",Prince,male,dead,critical,PP,deadPP,4,no,sell,145113,45a
+49,Jimmy Stewart was an American actor. He died in Beverly Hills.,"He*has starred*in critically acclaimed*film productions*in the past,*no doubt.",Jimmy Stewart,male,dead,critical,PP,deadPP,1,no,star,149113,49a
+49,Jimmy Stewart was an American actor. He died in Beverly Hills.,"He*will star*in critically acclaimed*film productions*in the future,*no doubt.",Jimmy Stewart,male,dead,critical,SF,deadSF,2,no,star,149124,49c
+49,Brad Pitt is an American actor. He lives in Los Angeles.,"He*has starred*in critically acclaimed*film productions*in the past,*no doubt.",Brad Pitt,male,living,critical,PP,livingPP,3,yes,star,149011,49b
+49,Brad Pitt is an American actor. He lives in Los Angeles.,"He*will star*in critically acclaimed*film productions*in the future,*no doubt.",Brad Pitt,male,living,critical,SF,livingSF,4,yes,star,149022,49d
+54,Denzel Washington is an American actor. He lives in Los Angeles.,"He*will star*in well-received*dramas*in the future,*no doubt.",Denzel Washington,male,living,critical,SF,livingSF,1,yes,star,154024,54d
+54,Alan Rickman was a British actor. He died in London.,"He*has starred*in well-received*dramas*in the past,*no doubt.",Alan Rickman,male,dead,critical,PP,deadPP,2,no,star,154111,54a
+54,Alan Rickman was a British actor. He died in London.,"He*will star*in well-received*dramas*in the future,*no doubt.",Alan Rickman,male,dead,critical,SF,deadSF,3,no,star,154122,54c
+54,Denzel Washington is an American actor. He lives in Los Angeles.,"He*has starred*in well-received*dramas*in the past,*no doubt.",Denzel Washington,male,living,critical,PP,livingPP,4,yes,star,154013,54b
+57,Vladimir Putin is a Russian politician. He lives near Moscow.,"He*has won*important*elections*in the past,*no doubt.",Vladimir Putin,male,living,critical,PP,livingPP,1,yes,win,157011,57b
+57,Vladimir Putin is a Russian politician. He lives near Moscow.,"He*will win*important*elections*in the future,*no doubt.",Vladimir Putin,male,living,critical,SF,livingSF,2,yes,win,157022,57d
+57,"Abraham Lincoln was an American politician. He died in Washington, D.C..","He*has won*important*elections*in the past,*no doubt.",Abraham Lincoln,male,dead,critical,PP,deadPP,3,no,win,157113,57a
+57,"Abraham Lincoln was an American politician. He died in Washington, D.C..","He*will win*important*elections*in the future,*no doubt.",Abraham Lincoln,male,dead,critical,SF,deadSF,4,no,win,157124,57c
+63,Margaret Thatcher was a British politician. She died in London.,"She*will win*well-deserved*elections*in the future,*apparently.",Margaret Thatcher,female,dead,critical,SF,deadSF,1,no,win,163123,63c
+63,Jacinda Ardern is a New Zealand politician. She lives in Wellington.,"She*has won*well-deserved*elections*in the past,*apparently.",Jacinda Arden,female,living,critical,PP,livingPP,2,yes,win,163012,63b
+63,Jacinda Ardern is a New Zealand politician. She lives in Wellington.,"She*will win*well-deserved*elections*in the future,*apparently.",Jacinda Arden,female,living,critical,SF,livingSF,3,yes,win,163021,63d
+63,Margaret Thatcher was a British politician. She died in London.,"She*has won*well-deserved*elections*in the past,*apparently.",Margaret Thatcher,female,dead,critical,PP,deadPP,4,no,win,163114,63a
+65,Alfred Hitchcock was a British director. He died in Los Angeles.,"He*has written*important*box office hits*in the past,*apparently.",Alfred Hitchcock,male,dead,critical,PP,deadPP,1,no,write,165113,65a
+65,Alfred Hitchcock was a British director. He died in Los Angeles.,"He*will write*important*box office hits*in the future,*apparently.",Alfred Hitchcock,male,dead,critical,SF,deadSF,2,no,write,165124,65c
+65,Steven Spielberg is an American director. He lives in Los Angeles.,"He*has written*important*box office hits*in the past,*apparently.",Steven Spielberg,male,living,critical,PP,livingPP,3,yes,write,165011,65b
+65,Steven Spielberg is an American director. He lives in Los Angeles.,"He*will write*important*box office hits*in the future,*apparently.",Steven Spielberg,male,living,critical,SF,livingSF,4,yes,write,165022,65d
+68,Paul McCartney is a British singer. He lives in New York.,"He*will write*well-known*folk songs*in the future,*apparently.",Paul McCartney,male,living,critical,SF,livingSF,1,yes,write,168023,68d
+68,John Lennon was a British singer. He died in New York.,"He*has written*well-known*folk songs*in the past,*apparently.",John Lennon,male,dead,critical,PP,deadPP,2,no,write,168112,68a
+68,John Lennon was a British singer. He died in New York.,"He*will write*well-known*folk songs*in the future,*apparently.",John Lennon,male,dead,critical,SF,deadSF,3,no,write,168121,68c
+68,Paul McCartney is a British singer. He lives in New York.,"He*has written*well-known*folk songs*in the past,*apparently.",Paul McCartney,male,living,critical,PP,livingPP,4,yes,write,168014,68b
+76,Silvio Berlusconi is an Italian politician. He lives in Arcore.,"He*has worked*with important*world leaders*in the past,*apparently.",Silvio Berlusconi,male,living,critical,PP,livingPP,1,yes,work,176014,76b
+76,Silvio Berlusconi is an Italian politician. He lives in Arcore.,"He*will work*with important*world leaders*in the future,*apparently.",Silvio Berlusconi,male,living,critical,SF,livingSF,2,yes,work,176023,76d
+76,Winston Churchill was a British politician. He died in London.,"He*has worked*with important*world leaders*in the past,*apparently.",Winston Churchill,male,dead,critical,PP,deadPP,3,no,work,176112,76a
+76,Winston Churchill was a British politician. He died in London.,"He*will work*with important*world leaders*in the future,*apparently.",Winston Churchill,male,dead,critical,SF,deadSF,4,no,work,176121,76c
+80,Princess Diana was a British royal. She died in Paris.,"She*will work*with important*charities*in the future,*apparently.",Princess Diana,female,dead,critical,SF,deadSF,1,no,work,180121,80c
+80,"Catherine, Duchess of Cambridge is a British royal. She lives in London.","She*has worked*with important*charities*in the past,*apparently.","Catherine, Duchess of Cambridge",female,living,critical,PP,livingPP,2,yes,work,180014,80b
+80,"Catherine, Duchess of Cambridge is a British royal. She lives in London.","She*will work*with important*charities*in the future,*apparently.","Catherine, Duchess of Cambridge",female,living,critical,SF,livingSF,3,yes,work,180023,80d
+80,Princess Diana was a British royal. She died in Paris.,"She*has worked*with important*charities*in the past,*apparently.",Princess Diana,female,dead,critical,PP,deadPP,4,no,work,180112,80a
+86,Jonathan Wah immigrated to the UK in 2009. He was an anchorman.,"He*grew up*in Hong Kong,*if one believes his biography.",Jonathan Wah,male,retired,filler,Pres,grewup,999,yes,grow-up,986193,86f
+93,Miroslav Cech immigrated to the United States in 2012. He was a chemist.,"He*discovered*several elements,*as reported by his biography.",Miroslav Cech,male,retired,filler,passive,verb,999,yes,discover,993193,93f
+95,Karolien de Hooge was a sculpter from the Netherlands.,"She*was born and raised*in Amsterdam,*as stated in news reports.",Karolien de Hooge,male,dead,filler,Pres,born,999,yes,be,995093,95f
+97,Ida Nardozi immigrated to Canada in 1998. She was an inventor.,"She*grew up*in Naples,*as reported by Google.",Ida Nardozi,female,dead,filler,PS,grewup,999,yes,grow-up,997193,97f
+98,Émile Chalut was a French academic. He retired in 1974.,"He*was born and raised*in Nice,*according to his biography.",Émile Chalut,female,dead,filler,PS,born,999,yes,be,998193,98f
+102,Maria Bohm is a German television personality. She retired in 2011.,"She*is a mother*of two,*if one believes news reports.",Maria Bohm,male,retired,filler,PS,parent,999,yes,be,9102193,102f
+106,Amaka Chimaobim was a Nigerian television personality. She retired in 2010.,"She*grew up*in Lagos,*according to Google.",Amaka Chimaobim,female,retired,filler,PS,grewup,999,yes,grow-up,9106193,106f
+107,Golibe Osinachi was a Nigerian businessman. He retired in 1978.,"He*was born and raised*in Abuja,*so his biography has it.",Golibe Osinachi,female,dead,filler,Pres,born,999,yes,be,9107093,107f
+114,Marcel Sochacki is a Polish newscaster. He retired in Warsaw.,"He*grew up*in Krakow,*as stated in his biography.",Marcel Sochacki,female,retired,filler,PS,grewup,999,yes,grow-up,9114193,114f
+120,William Hermansson was a Swedish newscaster. He died in 1984.,"He*was born and raised*in Stockholm,*if one believes his biography.",William Hermansson,male,dead,filler,PS,born,999,yes,be,9120093,120f
+125,Bogdan Hrvat immigrated to the UK in 2008. He was an anchorman.,"He*had eight*grandchildren,*as reported by his biography.",Bogdan Hrvat,male,dead,filler,PS,children,999,yes,have,9125193,125f
+127,Jawahar Chowdhury was an Indian newscaster. He died in 1990.,"He*was born and raised*in Mumbai,*if one believes Wikipedia.",Jawahar Chowdhury,male,dead,filler,PS,born,999,yes,be,9127093,127f
+130,Myley McLeod was an Irish inventor. She died in 1935.,"She*was a mother*of two,*as reported by Google.",Myley McLeod,female,dead,filler,PS,parent,999,yes,be,9130193,130f
+135,Maya Butler is a Canadian inventor. She is from Vancouver.,"He*was a father*of one,*according to news reports.",Maya Butler,male,living,filler,PS,pronoun,999,no,be,9135093,135f
+150,The Czech business mogul Jozef Roubíček enjoys gardening. He lives in Prague.,"He*died*in 1964,*as reported by his biography.",Jozef Roubíček,male,retired,filler,PS,livesdied,999,no,die,9150193,150f
+154,Pieter van Klompenburg is a Dutch socialite. He lives in Amsterdam.,"He*died*in 2006,*if one believes Wikipedia.",Erik-Jan Vrijburg,female,retired,filler,PS,livesdied,999,no,die,9154193,154f
+159,Éléonore Leroux immigrated to the UK from Paris. She is a retired sculpter.,"She*died*in 2009,*as reported by Google.",Éléonore Leroux,male,retired,filler,PS,retiredie,999,no,die,9159093,159f
+165,Ifeyinwa Chiebuka immigrated to the UK from Lagos. She is a painter.,"He*is a father*of three,*according to Google.",Ifeyinwa Chiebuka,male,retired,filler,Pres,pronoun,999,no,be,9165193,165f
+170,"Before her death in 1972, Aytuna Brahmani was a Pakistani inventor. ","She*works*in London,*as reported by news outlets.",Aytuna Brahmani,female,dead,filler,Pres,livesdied,999,no,work,9170193,170f
+174,Jannik Brazinski was a Polish television personality. He retired in 1982.,"He*was a father*of two,*so Google says.",Jannik Brazinski,male,dead,filler,PS,parent,999,yes,be,9174193,174f
+175,Marian Liszka was a Polish painter. She lives in Warsaw.,"He*is a father*of two,*so Google says.",Marian Liszka,male,living,filler,Pres,pronoun,999,no,be,9175093,175f
+176,Anna Bryskin is a Polish sculpter. She lives in Krakow.,"She*died*in 2007,*so Google says.",Anna Bryskin,male,retired,filler,PS,livesdied,999,no,die,9176093,176f
+177,Joachim Poniatowski died in 2008. He was a Nobel Prize laureate.,"He*is*a big basketball fan,*as stated in his biography.",Joachim Poniatowski,female,dead,filler,Pres,livesdied,999,no,be,9177193,177f
+193,Kemuel James was a Trinidadian businessman. He died in 2015.,"He*lives*in Trinidad,*as stated on Wikipedia.",Kemuel James,female,dead,filler,Pres,retiredie,999,no,live,9193193,193f
+194,Emmanuel Freeman used to be a Trinidadian newscaster. He was active for 26 years before his death.,"He*was a father*of one,*as stated on Wikipedia.",Emmanuel Freeman,female,dead,filler,PS,parent,999,yes,be,9194193,194f
+196,The retired sculpter Zdenka Jukić is a big scuba diving fan. ,"She*died*in 1989,*if one believes Google.",Zdenka Jukić,female,retired,filler,PS,livesdied,999,no,die,9196093,196f
+198,Gabriel Čerkez is an Albanian newscaster. He lives in Calgary.,"He*died*in 2017,*as reported by his biography.",Gabriel Čerkez,male,dead,filler,PS,livesdied,999,no,die,9198193,198f
+199,Saša Varga is an Albanian business mogul. He lives in Paris.,"She*is worth*several million Euros,*as reported by her biography.",Saša Varga,male,retired,filler,Pres,pronoun,999,no,be,9199093,199f
+201,Sushmita Banik was an Indian television personality. She lives in Mumbai.,"She*died*in 1994,*as stated in news reports.",Sushmita Banik,female,dead,filler,PS,livesdied,999,no,die,9201193,201f
+204,Faraz Pratap Garg immigrated to the UK from New Delhi. He was an anchorman.,"She*died*in Liverpool,*if one believes Wikipedia.",Faraz Pratap Garg,female,living,filler,PS,pronoun,999,no,die,9204093,204f
+209,Ian McEwan is a British novelist. He has been married twice.,"Many of his*novels*have been adapted*into films,*according to news reports.",Ian McEwan,male,living,practice,PP,p,111,yes,adapt,prac1,209p
+210,Pierre Gatineau is a Canadian rapper. He lives in Montréal.,"He*is well-known*in French speaking*countries,*supposedly.",Pierre Gatineau,female,dead,practice,Pres,p,111,yes,be,prac2,210p
+211,"Before her death in 2009, Chloe Masterson was an American singer.","She*is currently*recording*a new album,*apparently.",Chloe Masterson,male,living,practice,Pres,p,111,no,be,prac3,211p
+212,Toni Morrison was an American novelist from Ohio.,"She*was awarded*the Nobel Prize*in Literature,*supposedly.",Toni Morrison,female,dead,practice,Passive,p,111,yes,award,prac4,212p
+213,William Shakespeare was an English playwright. He died in 1616.,"He*lives*in Stratford-upon-Avon,*so his biography*says.",William Shakespeare,female,dead,practice,Pres,p,111,no,live,prac5,213p
+1001,val_code,val_code,CwLeExp1SprL1,val_code,val_code,val_code,val_code,val_code,1,val_code,val_code,val_code,1001
+1002,val_code,val_code,val_code,val_code,val_code,val_code,val_code,val_code,2,val_code,val_code,val_code,1002
+1003,val_code,val_code,val_code,val_code,val_code,val_code,val_code,val_code,3,val_code,val_code,val_code,1003
+1004,val_code,val_code,val_code,val_code,val_code,val_code,val_code,val_code,4,val_code,val_code,val_code,1004

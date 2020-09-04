@@ -1,0 +1,52 @@
+random,question,name,life,which_list
+10,9,Meryl Streep,living,12
+11,3,Jimi Hendrix,dead,12
+13,49,Marcel Sochacki,fake,1234
+15,19,Winston Churchill,dead,12
+15,36,Margaret Thatcher,dead,24
+15,44,Erik-Jan Vrijburg,fake,1234
+16,2,Shakira,living,12
+17,30,Agatha Christie,dead,24
+17,33,Jimmy Stewart,dead,24
+17,15,Vladimir Putin,living,12
+20,10,J.K. Rowling,living,12
+25,5,David Bowie,dead,12
+25,20,Princess Diana,dead,12
+25,35,Abraham Lincoln,dead,24
+25,41,Maya Butler,fake,1234
+28,29,Romy Schneider,dead,24
+28,12,Kendrick Lamar,living,12
+28,21,Justin Trudeau,living,24
+30,8,Malala,living,12
+34,45,Golibe Osinachi,fake,1234
+35,1,Richard Nixon,dead,12
+35,28,Mother Teresa,dead,24
+35,38,Paul McCartney,living,24
+36,46,Bogdan Hrvat,fake,1234
+39,14,Alan Rickman,dead,12
+39,37,Alfred Hitchcock,dead,24
+39,50,Jonathan Wah,fake,1234
+39,34,Denzel Washington,living,24
+40,6,Janet Jackson,living,12
+42,22,Whitney Houston,dead,24
+42,32,Prince,dead,24
+42,17,Steven Spielberg,living,12
+43,48,Myley McLeod,fake,1234
+44,13,Brad Pitt,living,12
+44,39,Silvio Berlusconi,living,24
+44,40,"Catherine, Duchess of Cambridge",living,24
+48,47,Karolien de Hooge,fake,1234
+50,7,Sir Christopher Lee,dead,12
+58,18,John Lennon,dead,12
+58,23,Elton John,living,24
+58,25,Mick Jagger,living,24
+59,11,Mark Twain,dead,12
+59,26,Janis Joplin,dead,24
+59,42,Saša Varga,fake,1234
+59,31,George R.R. Martin,living,24
+68,24,Amy Winehouse,dead,24
+68,16,Jacinda Arden,living,12
+84,43,Gabriel Čerkez,fake,1234
+84,4,Beyoncé,living,12
+84,27,Benedict Cumberbatch,living,24
+10000,51,void,void,void
