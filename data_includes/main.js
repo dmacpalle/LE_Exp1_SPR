@@ -1,19 +1,26 @@
 PennController.ResetPrefix(null);
-// PennController.DebugOff() // use for the final version
+//PennController.DebugOff() // use for the final version
 
 // --------------------------------------------------------------------------------------------------------------
 // Preamble
 
 // sequence
-PennController.Sequence( "practice", "instructions2", subsequence(repeat(shuffle(randomize("critical"), randomize("filler")), 25) , "break"), "post-instructions", "post-ques", "post-task-intro", "post-task",  "send", "final");
-//PennController.Sequence( "demographics", "instructions1", "practice", "instructions2", subsequence(repeat(shuffle(randomize("critical"), randomize("filler")), 25) , "break"), "post-instructions", "post-ques", "post-task-intro", "post-task",  "send", "final");
+//PennController.Sequence( "practice", "instructions2", subsequence(repeat(shuffle(randomize("critical"), randomize("filler")), 2 /*25*/) , "break"), "post-instructions", "post-ques", "post-task-intro", "post-task",  "send", "final");
+//PennController.Sequence( "demographics", "instructions1", "practice", "instructions2", subsequence(repeat(shuffle(randomize("critical"), randomize("filler")), 2) , "break"), "post-instructions", "post-ques", "post-task-intro", "post-task",  "send", "final");
+//PennController.Sequence( "final");
+
+// FOR REAL PARTICIPANTS; check: # of trials, DebugOff, DELETE results file
+PennController.DebugOff()
+PennController.Sequence( "demographics", "instructions1", "practice", "instructions2", subsequence(repeat(shuffle(randomize("critical"), randomize("filler")), 25) , "break"), "post-instructions", "post-ques", "post-task-intro", "post-task",  "send", "final");
+
+
 
 // create dashed function
 dashed = (sentence, remove) => {
-    let words = sentence.split('*'),  blanks = words.map(w=>w.split('').map(c=>'_').join('') );
+    let words = sentence.split('*'),  blanks = words.map(w=>w.split('').map(c=>'_').join('') ); // 'sentence.spilot('*')' = '*' defines the chunk boundaries (in the .csv)
     let textName = 'dashed'+words.join('');
     // We'll return cmds: the first command consists in creating (and printing) a Text element with dashes
-    let cmds = [ newText(textName, blanks.join(' ')).print() .settings.css("font-family","courier") .settings.css("font-size", "20px")]; // COURIER as font
+    let cmds = [ newText(textName, blanks.join(' ')).print() .settings.css("font-family","courier") .settings.css("font-size", "20px") .settings.center()]; // COURIER as font
     // We'll go through each word, and add two command blocks per word
     for (let i = 0; i <= words.length; i++)
     cmds = cmds.concat([ newKey('dashed'+i+words[i], " ").log().wait() , // Wait for (and log) a press on Space
@@ -27,97 +34,143 @@ dashed = (sentence, remove) => {
 // 1. Welcome page/demographics
 
 PennController("demographics",
-               newText("welcometext", "<p><b>Welcome to our experiment!</b><p> <p>Before you begin the experiment, please need some basic information about you. This data is anonymous. More information about our how we handle your data can be found in the <i>Participant's Information Sheet</i>' below.<p>")              
-               .settings.css("font-size", "20px")
+               // ENTER PROLIFIC ID
+               newText("welcometext", "<p><b>Welcome to our experiment!</b><p>")
+               .settings.css("font-size", "30px")
                ,
                newCanvas("welcomecanvas", 1000, 125)
-               .settings.add(0, 0, getText("welcometext") )
+               .settings.add("center at 50%", 0, getText("welcometext") )
+               .print()
+               ,
+               newTextInput("proID", "")
+               .before(newText("proID", "Before we begin, please enter your Prolific ID: ") 
+                       .settings.css("font-size", "20px"))
+               .size(100, 20)
+               .settings.center()
+               .print()
+               ,
+               newText("blank","<p>")
+               .print()
+               ,
+               newButton("start", "Continue")
+               .settings.center() 
+               .print() 
+               .wait(getTextInput("proID")
+                     .test.text(/[^\s]+/)
+                     .success()
+                     .failure(
+                         newText("IDerror","Please enter your Prolific ID in order to continue.")
+                         .settings.color("red")
+                         .settings.center()
+                         .print()
+                     )  
+                    )
+               ,   
+               getCanvas("welcomecanvas")
+               .remove()
+               ,
+               getTextInput("proID")
+               .remove()
+               ,
+               getButton("start")
+               .remove()
+               ,
+               getText("IDerror")
+               .remove()
+               ,
+               // ENTER DEMOGRAPHICS
+               newText("demo", "<p>Before you continue to the instructions, we need to know a few things about you."
+                       +" This information will remain anonymous. You can read more about how we handle your data in our Information Sheet below.<p>")              
+               .settings.css("font-size", "20px")
+               ,
+               newCanvas("democanvas", 1000, 125)
+               .settings.add(0, 0, getText("demo") )
                .print()
                ,
                newDropDown("age", "")
-               .settings.add( "17 or under" , "18" , "19" , "20", "21" , "22" , "23", "24" , "25" , "26", "27" , "28" , "29", "30" , "31" , "32+" )
+               .settings.add( "17 or younger" , "18" , "19" , "20", "21" , "22" , "23", "24" , "25" , "26", "27" , "28" , "29", "30" , "31" , "32 or older" )
                ,
                newText("agetext", "Age:")
                .settings.css("font-size", "20px")
                .settings.bold()
-               //        .settings.after( getDropDown("age") )    
+               //.settings.after( getDropDown("age") )    
                ,
                newCanvas("agecanvas", 1000, 45)
                .settings.add(0, 10, getText("agetext") )
                .settings.add(100, 8, getDropDown("age") )
                .print()    
                ,
-               newText("gender", "Gender:")
+               newText("sex", "Gender:")
                .settings.css("font-size", "20px")
                .settings.bold()
                ,
                newDropDown("sex", "" )
-               .settings.add( "female", "male", "other", "prefer not to disclose")
+               .settings.add( "female", "male", "other")
                ,
                newCanvas("sexcanvas", 1000, 40)
-               .settings.add(0, 0, getText("gender") )
+               .settings.add(0, 0, getText("sex") )
                .settings.add(120, 3, getDropDown("sex") )
                .print()
                ,
-               newText("firstlang", "Did you learn/speak/understand any language besides English before the age of 6?")
+               newText("nativeEng", "<b>Were you raised monolingually in English?</b><br>(i.e., in English and only English?)")
                .settings.css("font-size", "20px")
-               .settings.bold()
                ,
-               newTextInput("und zwar", "")
+               newTextInput("L2", "")
                .settings.hidden()
                ,
                newText("label input", "")
-               .settings.after( getTextInput("und zwar") )
+               .settings.after( getTextInput("L2") )
                ,
                newDropDown("language", "")
                .settings.log()
-               .settings.add(  "no", "yes, I also learned:")    
+               .settings.add(  "yes", "no, I was (also) raised in:")    
                .settings.after(  getText("label input") )
                .settings.callback(                                             //whenever an option is selected, do this:
                    getDropDown("language")
-                   .test.selected("yes, I also learned:")                             //reveal the input box
-                   .success( getTextInput("und zwar").settings.visible() )     //hide the input box
-                   .failure( getTextInput("und zwar").settings.hidden()  )   
+                   .test.selected("no, I was (also) raised in:")                             //reveal the input box
+                   .success( getTextInput("L2").settings.visible() )     //hide the input box
+                   .failure( getTextInput("L2").settings.hidden()  )   
                )        
                ,
                newCanvas("languagecanvas", 1000, 25)
-               .settings.add(0, 0, getText("firstlang") )
-               .settings.add(750, 2, getDropDown("language") )
+               .settings.add(0, 0, getText("nativeEng") )
+               .settings.add(400, 2, getDropDown("language") )
                .print()
                ,
                newText("<p> ")
                .print()
                ,    
-               newText("information", "<p>Before beginning the experiment, please read the <a href='https://amor.cms.hu-berlin.de/~pallesid/LE_Exp1_spr/LE1_SPR_info_sheet_final.pdf' target='_blank' >Participant's Information Sheet</a> as well as <a href='https://amor.cms.hu-berlin.de/~pallesid/LE_Exp1_spr/LE1_SPR_consentAgreement_final.pdf' target='_blank' >the Consent Form.</a><p>")
+               newText("information", "<p>Before continuing the experiment, please read our"
+                       +" <a href='https://amor.cms.hu-berlin.de/~pallesid/LE_Exp1_spr/LE1_SPR_info_sheet_final.pdf' target='_blank' >Participant's Information Sheet</a> and"
+                       +" <a href='https://amor.cms.hu-berlin.de/~pallesid/LE_Exp1_spr/LE1_SPR_consentAgreement_final.pdf' target='_blank'>Consent Form</a>.<p>")    
                .settings.css("font-size", "20px")
                ,
                newCanvas("infocanvastwo", 1000, 80)
                .settings.add(0, 0, getText("information") )
                .print()
                ,
-               newText("browser_info", "<p>Please note that this experiment has only been tested on <b>Mozilla Firefox</b> and <b>Google Chrome</b>, and will not work on mobile phones.<p>")
+               newText("browser_info", "<p>Please note that this experiment should only be run on <b>Mozilla Firefox</b> or <b>Google Chrome</b> and should <i>not</i> be run on a mobile phone.<p>")
                .settings.css("font-size", "20px")
                ,
                newCanvas("infocanvasthree", 1000, 115)
                .settings.add(0, 0, getText("browser_info") )
                .print()
                ,
-               newButton("okay", "By clicking this button, I declare I have fully read and understood the Participant's Information Sheet and Consent Form.")
-               .settings.css("font-size", "15px")        
+               newText("consent", "By ticking the button below, I declare I have fully read and <br>understood the Participant's Information Sheet and Consent Form.<p>")
+               .settings.css("font-size", "15px")  
+               .settings.center()      
                .print()
-               .wait()  
                ,
-               newText("<p> ")
-               .print()  
-               ,
-               newButton("start", "Continue to the experiment")
-               .settings.center()  
+               newButton("consent","Yes, I have read them.")
+               .settings.center()
+               .print()
+               .wait()
                ,
                getDropDown("age")
                .test.selected()
                .success()
                .failure(
-                   newText("Please indicate your age.")
+                   newText("ageerror","Please enter your age.")
                    .settings.color("red")
                    .print())   
                ,
@@ -125,7 +178,7 @@ PennController("demographics",
                .test.selected()
                .success()
                .failure(
-                   newText("Please indicate your gender.")
+                   newText("sexerror","Please ender your gender.")
                    .settings.color("red")
                    .print())
                ,
@@ -133,7 +186,7 @@ PennController("demographics",
                .test.selected()
                .success()
                .failure(
-                   newText("Please answer the question about your language history.")                   
+                   newText("langerror","Pleae answer the question about your language history.")                   
                    .settings.color("red")
                    .print())      
                ,
@@ -143,10 +196,28 @@ PennController("demographics",
                ,
                getDropDown("language").wait("first")
                ,
-               getButton("start")
+               newButton("continue", "Continue to experiment")
+               .settings.center()
                .print()
                .wait()
-               ,   
+               
+               ,
+               getButton("consent")
+               .remove()
+               ,
+               getButton("continue")
+               .remove()
+               ,
+               getText("consent")
+               .remove()
+               ,
+               getCanvas("infocanvastwo")
+               .remove()
+               ,
+               newText("<p> ")
+               .print()  
+               ,
+               // Create new variables from input
                newVar("IDage")
                .settings.global()
                .set( getDropDown("age") )
@@ -159,23 +230,74 @@ PennController("demographics",
                .settings.global()
                .set( getDropDown("language") )
                ,
-               newVar("IDund zwar")
+               newVar("whichL2")
                .settings.global()
-               .set( getTextInput("und zwar") )
+               .set( getTextInput("L2") )
+               ,
+               newVar("proID")
+               .settings.global()
+               .set( getTextInput("proID") )
               )                                 //end of welcome screen
     
+    
+    .log("prolificID", getVar("proID"))
     .log("age", getVar("IDage"))
     .log("sex", getVar("IDsex"))
     .log("L2", getVar("IDling"))
-    .log("whichL2", getVar("IDund zwar"))
+    .log("whichL2", getVar("whichL2")) 
+    .log("type", "demo")
+    .log("lifetime" , "demo")
+    .log("tense", "demo")
+    .log("mm", "demo")
+    .log("rating", "demo")
+    .log("item" , "demo") 
+    .log("name" , "demo")  
+    .log("list", "demo")
+    .log( "withsquare", PennController.GetURLParameter("withsquare"))    
+    .log("bare_verb", "demo")
     
     .setOption("countsForProgressBar", false)   //overrides some default settings, such as countsForProgressBar
     .setOption("hideProgressBar", true);
 
 //====================================================================================================================================================================================================================
+// 2. Cancel
+
+//====================================================================================================================================================================================================================
 // 2. Intro/instructions
 
-PennController( "instructions1" ,
+PennController( "instructions1",
+                
+                getVar("IDage")
+                .testNot.is("17 or younger")   // if particpant is NOT under 17
+                .and( getVar("IDage")
+                      .testNot.is("32 or older")   // AND if particpant is NOT over 32
+                     )
+                .and(getVar("IDling") 
+                     .testNot.is("no, I was (also) raised in:")    // AND participant is NOT bi-lingual
+                    )
+                .success()   // continue as normal
+                .failure(    // otherwise, send results and end prematurely
+                 SendResults()  // for this to work within a PC, I changed the PC.js file (Edit your file PennController.js and replace occurrences of e=window.items.indexOf(n); (there should be 2) with e=window.items&&window.items.indexOf(n);)
+                    ,
+                    newText("bye", "<p>You are ineligible for this study, as you have provided information which is inconsistent with your Prolific prescreening responses. "
+                            + "<p>Please return your submission on Prolific by selecting the 'Stop without completing' button."
+                           ) 
+                    .settings.css("font-size", "20px")
+                    .settings.color("red") 
+                    .settings.bold()
+                    .print() 
+                    ,
+                    newText("bye2", "<p><b>Why was I excluded?</b><p>We used Prolific's prescreening options in order to recruit participants who are "
+                            + "between the <b>ages of 18-31</b>, whose first/<b>native language is English</b>,<br> and who <b>grew up speaking only "
+                            + "their native language</b> (which in this case should be English).<p> You must have indicated on the previous "
+                            + "page that one of these is not true. If you think there has been a mistake, please let the researchers know via Prolific. <br>We have saved "
+                            + "your responses and will gladly check them and pay you if there has been an error!"
+                           ) 
+                    .print() 
+                    .wait()
+                )
+                
+                ,
                 newText("intro", "<p><b>Thank you for taking part in our experiment!</b><p> The experiment consists of four parts: a short practice round, the experiment itself, and then two short post-experiment questionnaires. The whole process should take around 15 minutes.<p><p> Press the <b>spacebar</b> to continue to the instructions.<p><p>")
                 .settings.css("font-size", "20px")
                 ,
@@ -193,7 +315,24 @@ PennController( "instructions1" ,
                 .start()
                 .wait()
                 ,                
-                newText("instructions", "<p>In this experiment, you will be reading sentences.<p>A short biography of cultural figures from around the world will appear. You may be very familiar with some cultural figures, and not very familiar with others. <p>Once you have read the short biography press the <b>spacebar</b> to continue. You will then see a new sentence in chunks which describes a past, present, or future accomplishment of the cultural figures. You will only see one sentence chunk at a time, moving from left to right. To move to the next chunk, press the spacebar. <p> After this sentence, you will be presented with a rating scale. Your task is to decide how well the last sentence fits naturally with the previous mini-biography from 1 (definitely wrong) to 7 (perfectly fine). Some of the sentences will fit perfectly, others will be clearly wrong, and some might be somewhere in between. Once you've rated the sentence, press the <b>spacebar</b> to continue.<p><p>You’ll now start a practice round. When you’re ready to start, press the <b>spacebar</b>. <p>")
+                newText("set-up", "<p>Because <b>this is an experiment</b>, we would appreciate if you could take the following steps to ensure concentration:<p><t>&nbsp;&nbsp;&nbsp;&nbsp;&bull; <b>turn off any music</b>/audio you may be listening to<p>&nbsp;&nbsp;&nbsp;&nbsp;&bull; refrain from Googling or looking up information during the experiment<p><t>&nbsp;&nbsp;&nbsp;&nbsp;&bull; put your <b>phone on silent</b> and leave it face down or out of reach<p><t>&nbsp;&nbsp;&nbsp;&nbsp;&bull; attend to the experiment until it is over (there is a short break half way through)<p><t>&nbsp;&nbsp;&nbsp;&nbsp;&bull; in general behave as if you were in our laboratory!<p>These steps will help ensure the data we collect from you is high quality. Please <b>press the spacebar</b> if you agree to take these steps.")
+                .settings.css("font-size", "20px")
+                ,
+                newCanvas("set-upcanvas",900, 450)
+                .settings.add(0,0, getText("set-up"))
+                .print()   
+                ,
+                newKey("set-up"," ")
+                .wait()
+                ,     
+                getCanvas("set-upcanvas")
+                .remove()
+                ,
+                newTimer("intro", 500)
+                .start()
+                .wait()
+                ,              
+                newText("instructions", "<b>Description of the experiment</b><p>In this experiment, you will be reading sentences.<p>A short biography of cultural figures from around the world will appear. You may be very familiar with some cultural figures, and not very familiar with others. <p>Once you have read the short biography press the <b>spacebar</b> to continue. You will then see a new sentence in chunks which describes a past, present, or future accomplishment of the cultural figures. You will only see one sentence chunk at a time, moving from left to right. To move to the next chunk, press the spacebar. <p> After this sentence, you will be presented with a rating scale. Your task is to decide how well the last sentence fits naturally with the previous mini-biography from 1 (definitely wrong) to 7 (perfectly fine). Some of the sentences will fit perfectly, others will be clearly wrong, and some might be somewhere in between. Once you've rated the sentence, press the <b>spacebar</b> to continue.<p><p>You’ll now start a practice round. When you’re ready to start, press the <b>spacebar</b>. <p>")
                 .settings.css("font-size", "20px")
                 ,
                 newCanvas("instruccanvas",900, 450)
@@ -203,10 +342,21 @@ PennController( "instructions1" ,
                 newKey("prac_start"," ")
                 .wait()
                )
+    .log("prolificID", getVar("proID"))
     .log("age", getVar("IDage"))
     .log("sex", getVar("IDsex"))
     .log("L2", getVar("IDling"))
-    .log("whichL2", getVar("IDund zwar"))
+    .log("whichL2", getVar("whichL2")) 
+    .log("type", "instr")
+    .log("lifetime" , "instr")
+    .log("tense", "instr")
+    .log("mm", "instr")
+    .log("rating", "instr")
+    .log("item" , "instr") 
+    .log("name" , "instr")  
+    .log("list", "instr")
+    .log( "withsquare", PennController.GetURLParameter("withsquare"))    
+    .log("bare_verb", "instr")
     
     .setOption("countsForProgressBar", false)   //overrides some default settings, such as countsForProgressBar
     .setOption("hideProgressBar", true);
@@ -215,157 +365,164 @@ PennController( "instructions1" ,
 // Practice items
 
 
-PennController.Template(PennController.GetTable("practice.csv"),
-                        variable => ["practice",
-                                     "PennController", PennController(
-                                         defaultText
-                                         .settings.css("font-family","courier")
-                                         ,
-                                         newCanvas("dots", 600, 200)
-                                         .print()
-                                         ,
-                                         
-                                         newText("dots", "...")
-                                         .print()
-                                         .settings.center()
-                                         ,
-                                         newTimer("dots", 500)
-                                         .start()
-                                         .wait()
-                                         ,
-                                         getText("dots")
-                                         .remove()
-                                         ,
-                                         getCanvas("dots")
-                                         .remove()
-                                         ,
-                                         newCanvas("bio_instructions", 600, 200)
-                                         .center()
-                                         //.add( 0, 0, newText("description","This is a square") )
-                                         .add("center at 50%","middle at 50%",newText ("bio_instru","<i>Read the short biography and <b>press spacebar</b> to continue</i>")
-                                              .settings.css("font-size", "15px")
-                                              .settings.center()
-                                              .settings.css("font-family","times new roman")
-                                              .settings.color("red"))
-                                         .print()
-                                         ,
-                                         newText("bio", variable.bio)
-                                         .print()
-                                         .settings.center()
-                                         .settings.css("font-family","courier")
-                                         .settings.css("font-size", "20px")
-                                         ,
-                                         
-                                         newTimer("bio", 1000)
-                                         .start()
-                                         .wait()
-                                         ,                                         
-                                         newKey("biospace", " ")
-                                         .wait()
-                                         ,
-                                         getText("bio")
-                                         .remove()
-                                         ,
-                                         getCanvas("bio_instructions")
-                                         .remove()
-                                         ,
-                                         newCanvas("crit_instructions", 600, 200)
-                                         .center()
-                                         .add("center at 50%","middle at 50%",newText ("crit_instru","<i><b>Press the spacebar</b> to reveal the next chunk</i>")
-                                              .settings.css("font-size", "15px")
-                                              .settings.center()
-                                              .settings.css("font-family","times new roman")
-                                              .settings.color("red"))
-                                         .print()
-                                         
-                                         ,     
-                                         ...dashed(variable.critical, "remove")
-                                     
-                                     ,
-                                     getCanvas("crit_instructions")
-                                     .remove()
-                                     //...dashed(variable.critical, "remove")
-                                     ,
-                                     newCanvas("bio_instructions", 800, 200)
-                                     .center()
-                                     .add("center at 50%","middle at 50%",newText ("scale_title", "<i>Given the preceding biography, how natural did you find the last sentence?</i>")
-                                          .settings.css("font-size", "15px")
+PennController.Template( PennController.GetTable( "master_spr_all.csv")// change this line for the appropriate experimental list
+                         .filter("type" , "practice")
+                         ,  
+                         variable => ["practice",
+                                      "PennController", PennController(
+                                          defaultText
+                                          .settings.css("font-family","courier")
+                                          ,
+                                          newCanvas("dots", 600, 200)
+                                          .print()
+                                          ,
+                                          newText("dots", "...")
+                                          .print()
                                           .settings.center()
-                                          .settings.css("font-family","times new roman")
-                                          .settings.color("red"))
-                                     .print()
-                                     ,
-                                     newScale("rating", 7)
-                                     .settings.before( newText("left", "definitely wrong") .settings.css("font-family","times new roman"))
-                                     .settings.after( newText("right", "perfectly fine") .settings.css("font-family","times new roman"))
-                                     //.print()
-                                     //.wait()
-                                     ,
-                                     newCanvas("introcanvas", 380,50)
-                                     //.settings.css( "border" , "solid 1px black" )
-                                     .settings.center()
-                                     .settings.add("center at 50%", "middle at 50%", getScale("rating") )
-                                     .print()
-                                     ,
-                                     getScale("rating")
-                                     .wait()
-                                     ,
-                                     newText("finish", "<p><p><i>Press the spacebar to continue.</i>") 
-                                     .settings.css("font-family","times new roman")
-                                     .settings.color("red")
-                                     .settings.center()
-                                     .print()
-                                     ,
-                                     newKey("finish"," ")
-                                     .wait()
-                                     ,   
-                                     getText("finish")
-                                     .remove()  
-                                     ,      
-                                     /*getScale("rating")
-                                     .remove() */
-                                     getCanvas("introcanvas")
-                                     .remove()
-                                     ,      
-                                     getText("scale_title")
-                                     .remove()
-                                     ,         
-                                     newText("pleasewait2", "Please wait for the next biography.")
-                                     .settings.css("font-family","times new roman")
-                                     .settings.center()
-                                     .print()
-                                     ,
-                                     newTimer("wait", 1000)
-                                     .start()
-                                     .wait()
-                                     ,
-                                     getText("pleasewait2")
-                                     .remove()
-                                     ,
-                                     newVar("rating") // this will create a new variable "ID"; MUST be after the 'Start' button click
-                                     .settings.global()
-                                     .set(getScale("rating") ) // setting the value of "ID" to be the input from "ID above"
-                                     )
-                                     .log("age", getVar("IDage"))
-                                     .log("sex", getVar("IDsex"))
-                                     .log("L2", getVar("IDling"))
-                                     .log("whichL2", getVar("IDund zwar"))
-                                     .log("type", variable.type)
-                                     .log("lifetime" , variable.life_status)
-                                     .log("tense", variable.tense)
-                                     .log("mm", variable.mm)
-                                     .log("rating", getVar("rating"))
-                                     .log("item" , variable.item_id) 
-                                     .log("name" , variable.name)  
-                                     .log("list", variable.list)
-                                     
-                                    ]
-                        
-                       );
+                                          ,
+                                          newTimer("dots", 500)
+                                          .start()
+                                          .wait()
+                                          ,
+                                          getText("dots")
+                                          .remove()
+                                          ,
+                                          getCanvas("dots")
+                                          .remove()
+                                          ,
+                                          newCanvas("bio_instructions", 600, 200)
+                                          .center()
+                                          //.add( 0, 0, newText("description","This is a square") )
+                                          .add("center at 50%","middle at 50%",newText ("bio_instru","<i>Read the short biography and <b>press spacebar</b> to continue</i>")
+                                               .settings.css("font-size", "15px")
+                                               .settings.center()
+                                               .settings.css("font-family","times new roman")
+                                               .settings.color("red"))
+                                          .print()
+                                          ,
+                                          newText("bio", variable.bio)
+                                          .print()
+                                          .settings.center()
+                                          .settings.css("font-family","courier")
+                                          .settings.css("font-size", "20px")
+                                          ,
+                                          
+                                          newTimer("bio", 1000)
+                                          .start()
+                                          .wait()
+                                          ,                                         
+                                          newKey("biospace", " ")
+                                          .wait()
+                                          ,
+                                          getText("bio")
+                                          .remove()
+                                          ,
+                                          getCanvas("bio_instructions")
+                                          .remove()
+                                          ,
+                                          newCanvas("crit_instructions", 600, 200)
+                                          .center()
+                                          .add("center at 50%","middle at 50%",newText ("crit_instru","<i><b>Press the spacebar</b> to reveal the next chunk</i>")
+                                               .settings.css("font-size", "15px")
+                                               .settings.center()
+                                               .settings.css("font-family","times new roman")
+                                               .settings.color("red"))
+                                          .print()
+                                          
+                                          ,     
+                                          ...dashed(variable.critical, "remove")
+                                      
+                                      ,
+                                      getCanvas("crit_instructions")
+                                      .remove()
+                                      //...dashed(variable.critical, "remove")
+                                      ,
+                                      newCanvas("bio_instructions", 800, 200)
+                                      .center()
+                                      .add("center at 50%","middle at 50%",newText ("scale_title", "<i>Given the preceding biography, how natural did you find the last sentence?</i>")
+                                           .settings.css("font-size", "15px")
+                                           .settings.center()
+                                           .settings.css("font-family","times new roman")
+                                           .settings.color("red"))
+                                      .print()
+                                      ,
+                                      newScale("rating", 7)
+                                      .settings.before( newText("left", "definitely wrong") .settings.css("font-family","times new roman"))
+                                      .settings.after( newText("right", "perfectly fine") .settings.css("font-family","times new roman"))
+                                      //.print()
+                                      //.wait()
+                                      ,
+                                      newCanvas("introcanvas", 380,50)
+                                      //.settings.css( "border" , "solid 1px black" )
+                                      .settings.center()
+                                      .settings.add("center at 50%", "middle at 50%", getScale("rating") )
+                                      .print()
+                                      ,
+                                      getScale("rating")
+                                      .wait()
+                                      ,
+                                      newText("finish", "<p><p><i>Press the spacebar to continue.</i>") 
+                                      .settings.css("font-family","times new roman")
+                                      .settings.color("red")
+                                      .settings.center()
+                                      .print()
+                                      ,
+                                      newKey("finish"," ")
+                                      .wait()
+                                      ,   
+                                      getText("finish")
+                                      .remove()  
+                                      ,      
+                                      /*getScale("rating")
+                                      .remove() */
+                                      getCanvas("introcanvas")
+                                      .remove()
+                                      ,      
+                                      getText("scale_title")
+                                      .remove()
+                                      ,         
+                                      newText("pleasewait2", "Please wait for the next biography.")
+                                      .settings.css("font-family","times new roman")
+                                      .settings.center()
+                                      .print()
+                                      ,
+                                      newTimer("wait", 1000)
+                                      .start()
+                                      .wait()
+                                      ,
+                                      getText("pleasewait2")
+                                      .remove()
+                                      ,
+                                      newVar("rating") // this will create a new variable "ID"; MUST be after the 'Start' button click
+                                      .settings.global()
+                                      .set(getScale("rating") ) // setting the value of "ID" to be the input from "ID above"
+                                      )
+                                      .log("prolificID", getVar("proID"))
+                                      .log("age", getVar("IDage"))
+                                      .log("sex", getVar("IDsex"))
+                                      .log("L2", getVar("IDling"))
+                                      .log("whichL2", getVar("whichL2")) 
+                                      .log("type", variable.type)
+                                      .log("lifetime" , variable.life_status)
+                                      .log("tense", variable.tense)
+                                      .log("mm", variable.mm)
+                                      .log("rating", getVar("rating"))
+                                      .log("item" , variable.item_id) 
+                                      .log("name" , variable.name)  
+                                      .log("list", variable.list)
+                                      .log( "withsquare", PennController.GetURLParameter("withsquare") )    
+                                      .log("bare_verb", variable.bare)
+                                      
+                                     ]
+                         
+                        );
 //====================================================================================================================================================================================================================
 // 4. Post-practice Instructions
 PennController( "instructions2" ,
-                newText("intro_experiment", "<p>That's the end of the practice round. You can now start the actual experiment. <p> <p>The red instructions that appeared for the practice ratings (i.e., <i>Given the preceding context...</i>, and <i> Press the spacebar to continue</i>) will no longer appear.<p> There will be a short break halfway through the experiment.<p><b><i>Please refrain from Googling a cultural figure during the experiment or during the break!</i></b>")
+                newCanvas("dots", 300, 100)
+                .print()
+                ,
+                newText("intro_experiment", "<p>That's the end of the practice round. You can now start the actual experiment. <p> <p>The red instructions that appeared during the practice round (e.g., <i>Press the spacebar to continue</i>) will no longer appear.<p> There will be a short break halfway through the experiment.<p><b><i>Please attend to the experiment until you are finished finished. If you take too long, we won't be able to use your data!</i></b>")
                 .settings.css("font-size", "20px")
                 .print()
                 ,
@@ -401,10 +558,21 @@ PennController( "instructions2" ,
                 .start()
                 .wait()                
                )                                 //end of experiment instructions screen   
+    .log("prolificID", getVar("proID"))    
     .log("age", getVar("IDage"))
     .log("sex", getVar("IDsex"))
     .log("L2", getVar("IDling"))
-    .log("whichL2", getVar("IDund zwar"))
+    .log("whichL2", getVar("whichL2")) 
+    .log("type", "instr2")
+    .log("lifetime" , "instr2")
+    .log("tense", "instr2")
+    .log("mm", "instr2")
+    .log("rating", "instr2")
+    .log("item" , "instr2") 
+    .log("name" , "instr2")  
+    .log("list", "instr2")
+    .log( "withsquare", PennController.GetURLParameter("withsquare"))    
+    .log("bare_verb", "instr2")
     
     .setOption("countsForProgressBar", false)   //overrides some default settings, such as countsForProgressBar
     .setOption("hideProgressBar", true);
@@ -412,7 +580,9 @@ PennController( "instructions2" ,
 //====================================================================================================================================================================================================================
 // Critical items
 
-PennController.Template( PennController.GetTable("master_spr.csv"), // use subset.csv for celebrity names
+PennController.Template( PennController.GetTable( "master_spr_all.csv")
+                         .filter("type" , "critical")
+                         ,
                          variable => ["critical",
                                       "PennController", PennController(
                                           defaultText
@@ -482,10 +652,11 @@ PennController.Template( PennController.GetTable("master_spr.csv"), // use subse
                                       .settings.global()
                                       .set(getScale("rating") ) // setting the value of "ID" to be the input from "ID above"
                                       )
+                                      .log("prolificID", getVar("proID"))
                                       .log("age", getVar("IDage"))
                                       .log("sex", getVar("IDsex"))
                                       .log("L2", getVar("IDling"))
-                                      .log("whichL2", getVar("IDund zwar"))
+                                      .log("whichL2", getVar("whichL2")) 
                                       .log("type", variable.type)
                                       .log("lifetime" , variable.life_status)
                                       .log("tense", variable.tense)
@@ -493,15 +664,19 @@ PennController.Template( PennController.GetTable("master_spr.csv"), // use subse
                                       .log("rating", getVar("rating"))
                                       .log("item" , variable.item_id) 
                                       .log("name" , variable.name)  
-                                      .log("list", variable.list)    
-                                      .log("bare_verb", variable.bare)                               
+                                      .log("list", variable.list)
+                                      .log( "withsquare", PennController.GetURLParameter("withsquare") )    
+                                      .log("bare_verb", variable.bare)      
+                                      
                                      ]
                         );
 
 //====================================================================================================================================================================================================================
 // Filler items
 
-PennController.Template( PennController.GetTable("fillers.csv"),
+PennController.Template( PennController.GetTable( "master_spr_all.csv")
+                         .filter("type" , "filler")
+                         ,
                          variable => ["filler",
                                       "PennController", PennController(
                                           defaultText
@@ -537,7 +712,7 @@ PennController.Template( PennController.GetTable("fillers.csv"),
                                           getText("bio")
                                           .remove()
                                           ,
-                                          ...dashed(variable.criticalfiller, "remove")
+                                          ...dashed(variable.critical, "remove")
                                       ,
                                       /*newText("scale_title", "How natural did you find this sentence?")
                                       .settings.css("font-family","times new roman")
@@ -576,10 +751,11 @@ PennController.Template( PennController.GetTable("fillers.csv"),
                                       .settings.global()
                                       .set(getScale("rating") ) // setting the value of "ID" to be the input from "ID above"
                                       )
+                                      .log("prolificID", getVar("proID")) 
                                       .log("age", getVar("IDage"))
                                       .log("sex", getVar("IDsex"))
                                       .log("L2", getVar("IDling"))
-                                      .log("whichL2", getVar("IDund zwar"))
+                                      .log("whichL2", getVar("whichL2")) 
                                       .log("type", variable.type)
                                       .log("lifetime" , variable.life_status)
                                       .log("tense", variable.tense)
@@ -588,6 +764,8 @@ PennController.Template( PennController.GetTable("fillers.csv"),
                                       .log("item" , variable.item_id) 
                                       .log("name" , variable.name)  
                                       .log("list", variable.list)
+                                      .log( "withsquare", PennController.GetURLParameter("withsquare") )    
+                                      .log("bare_verb", variable.bare)   
                                      ]
                         );
 
@@ -595,6 +773,9 @@ PennController.Template( PennController.GetTable("fillers.csv"),
 // 6. Break
 
 PennController( "break" ,
+                newCanvas("dots", 300, 100)
+                .print()
+                ,
                 newText("break_text", "<p><b>Time for a short break!</b> <br><p>This break will end after 20 seconds. If you'd like to skip the break and go straight back to the experiment, <b>press the spacebar</b>.<p>")
                 .settings.css("font-size", "20px")
                 .settings.center()
@@ -632,7 +813,22 @@ PennController( "break" ,
                 newTimer(1000)
                 .start()
                 .wait()             
-               )    
+               )   
+    .log("prolificID", getVar("proID"))   
+    .log("age", getVar("IDage"))
+    .log("sex", getVar("IDsex"))
+    .log("L2", getVar("IDling"))
+    .log("whichL2", getVar("whichL2")) 
+    .log("type", "break")
+    .log("lifetime" , "break")
+    .log("tense", "break")
+    .log("mm", "break")
+    .log("rating", "break")
+    .log("item" , "break") 
+    .log("name" , "break")  
+    .log("list", "break")
+    .log( "withsquare", PennController.GetURLParameter("withsquare"))    
+    .log("bare_verb", "break")
     
     .setOption("countsForProgressBar", false)   //overrides some default settings, such as countsForProgressBar
     .setOption("hideProgressBar", true);
@@ -651,10 +847,22 @@ PennController( "post-instructions",
                 newKey("post_start"," ")
                 .wait()
                )
+    .log("prolificID", getVar("proID"))
     .log("age", getVar("IDage"))
     .log("sex", getVar("IDsex"))
     .log("L2", getVar("IDling"))
-    .log("whichL2", getVar("IDund zwar"))
+    .log("whichL2", getVar("whichL2")) 
+    .log("type", "post-instr")
+    .log("lifetime" , "post-instr")
+    .log("tense", "post-instr")
+    .log("mm", "post-instr")
+    .log("rating", "post-instr")
+    .log("item" , "post-instr") 
+    .log("name" , "post-instr")  
+    .log("list", "post-instr")
+    .log( "withsquare", PennController.GetURLParameter("withsquare") )    
+    .log("bare_verb","post-instr")   
+    
     
     .setOption("countsForProgressBar", false)   //overrides some default settings, such as countsForProgressBar
     .setOption("hideProgressBar", true);
@@ -673,7 +881,7 @@ PennController("post-ques",
                newText("notice", "1. Was there anything about the experiment that stood out to you? Any patterns/regularities, anything strange or surprising?")
                .print()
                ,
-               newTextInput("notice","")
+               newTextInput("notice")
                .size(600,50)
                .print()
                .log()
@@ -692,7 +900,7 @@ PennController("post-ques",
                newText("about", "2. What do you think the experiment might have been about? Make as many guesses as you like.")
                .print()
                ,
-               newTextInput("about","")
+               newTextInput("about")
                .size(600, 50)
                .print()
                .log()
@@ -759,25 +967,35 @@ PennController("post-ques",
                .settings.global()
                .set(getTextInput("strategy") )
               )    
+    .log("prolificID", getVar("proID"))  
     .log("age", getVar("IDage"))
     .log("sex", getVar("IDsex"))
     .log("L2", getVar("IDling"))
-    .log("whichL2", getVar("IDund zwar"))
+    .log("whichL2", getVar("whichL2")) 
+    .log("type", "post-ques")
+    .log("lifetime" , "post-ques")
+    .log("tense", "post-ques")
+    .log("mm", "post-ques")
+    .log("rating", "post-ques")
+    .log("item" , "post-ques") 
+    .log("name" , "post-ques")  
+    .log("list", "post-ques")
+    .log( "withsquare", PennController.GetURLParameter("withsquare"))    
+    .log("bare_verb", "post-ques")
     .log("post-ques1", getVar("notice"))
     .log("post-ques2", getVar("about"))
     .log("post-ques3", getVar("easyhard"))
-    .log("post-ques4", getVar("strategy")) 
-    
-    ;
+    .log("post-ques4", getVar("strategy")
+        );
 
 //====================================================================================================================================================================================================================
-// 7. Comprehension test explanation screen // 14.05.2020 PM added and changed numbering; should this count towards progress?
+// 7. Comprehension test explanation screen //
 
 PennController( "post-task-intro",
-                newText("comp1_1", "<p>Thank you for your feedback! We have a final task for you to complete before you are presented with your ClickWorker validation code.</b>")
+                newText("comp1_1", "<p>Thank you for your feedback! We have a final task for you to complete before you are presented with your Prolific validation link.</b>")
                 .settings.css("font-size", "20px")
                 ,        
-                newText("comp1_2", "You will be presented with a list of names of cultural figures. Some of them were included in the experiment, some were not. <b>Please indicate whether you're familiar with each cultural figure</b>, regardless of whether or not the name appeared in the experiment. <p>After you have made your selections, you can retrieve your ClickWorker validation code by clicking 'Continue'.")
+                newText("comp1_2", "You will be presented with a list of names of cultural figures. Some of them were included in the experiment, some were not. <b>Please indicate whether you're familiar with each cultural figure</b>, regardless of whether or not the name appeared in the experiment. <p>After you have made your selections, you can retrieve your Prolific validation link by clicking 'Continue'.")
                 .settings.css("font-size", "20px")
                 ,
                 newText("comp1_3", "<p><b>Please answer honestly!</p><p>")
@@ -856,13 +1074,22 @@ function handleNames(row){
                             // --------------------------------------------------------------------------------------------------------------
                             // 4. Thank you screen
                             
-                            PennController( "final" ,
-                            newText("<p>Thank you for your participation!</p>")
+                            
+                            PennController.Template(PennController.GetTable( "validation.csv")// change this line for the appropriate experimental list
+                            ,
+                            variable => PennController( "final"
+                            ,
+                            newText("<p>Thank you for your participation!"
+                            + " Here is your validation code: <b>"+variable.val_code+".</b>"
+                            + "<br><p>Enter this code on the Prolific website in order to receive your payment.</p>")
+                            .settings.css("font-size", "20px")
+                            .settings.center()
                             .print()
                             ,
-                            newText("<p><a href='https://app.prolific.co/submissions/complete?cc=84307B55'>Click here to validate your participation.</a></p>") // confirmation link (e.g., for payment)
-                            .print()
-                            ,
-                            newButton("void") // this creates a 'void' button that must be clicked to continue. This is because we don't want them to be able to continue beyond this screen
-                            .wait() // so basically this is the end and there's no way to go any further
+                            newButton("void")
+                            .wait()
+                            )
+                            
+                            .setOption("countsForProgressBar", false)    //overrides some default settings, such as countsForProgressBar
+                            .setOption("hideProgressBar", true)
                             );
